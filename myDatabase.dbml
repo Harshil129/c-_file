@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="myDatabase" Class="myDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\myDatabase.mdf;Integrated Security=True" SettingsObjectName="WindowsFormsApp1.Properties.Settings" SettingsPropertyName="myDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Eno" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Dname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dept" Member="Depts">
+    <Type Name="Dept">
+      <Column Name="Deptno" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Dname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Loc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Dept_Emp" Member="Emps" ThisKey="Deptno" OtherKey="Deptno" Type="Emp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Emp" Member="Emps">
+    <Type Name="Emp">
+      <Column Name="Empno" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mgr" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HireDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Deptno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Dept_Emp" Member="Dept" ThisKey="Deptno" OtherKey="Deptno" Type="Dept" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
